@@ -12,13 +12,13 @@ const privateKey = process.env.DEV1_PRIVATE_KEY;
 const INFURA_ID = process.env.INFURA_ID;
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "mainnet",
+  defaultNetwork: "hardhat",
   networks: {
-    // hardhat: {
-    //   // forking: {
-    //   //   url: "https://mainnet.infura.io/v3/" + INFURA_ID,
-    //   // }
-    // },
+    hardhat: {
+      // forking: {
+      //   url: "https://mainnet.infura.io/v3/" + INFURA_ID,
+      // }
+    },
     // localhost: {
     //   url: "http://localhost:8545",
     // },
