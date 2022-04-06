@@ -30,7 +30,7 @@ describe("Factory", function () {
     factory = await Factory.deploy(auctionImpl.address, basketImpl.address);
     await factory.deployed();
   })
-  it("Should add a valid proposal", async () =>  {
+  it("should add a valid proposal", async () =>  {
     await factory.proposeBasketLicense(
       fee,
       tokenName,
@@ -49,7 +49,7 @@ describe("Factory", function () {
     expect(proposal[1][1].toString()).to.equal(COMP_WEIGHT);
     expect(proposal[1][2].toString()).to.equal(AAVE_WEIGHT);
   });
-  it("Should Revert on Duplicate Tokens", async () => {
+  it("should revert on duplicate tokens", async () => {
     await expect(factory.proposeBasketLicense(fee, 
       tokenName, 
       tokenSymbol, 
@@ -57,7 +57,7 @@ describe("Factory", function () {
       [UNI_WEIGHT, COMP_WEIGHT, AAVE_WEIGHT],
       max)).to.be.reverted
   });
-  it("Should Revert on < minLicenseFee", async () => {
+  it("should revert on < minLicenseFee", async () => {
     await expect(factory.proposeBasketLicense('0', 
       tokenName, 
       tokenSymbol, 
@@ -65,7 +65,7 @@ describe("Factory", function () {
       [UNI_WEIGHT, COMP_WEIGHT, AAVE_WEIGHT],
       max)).to.be.reverted
   });
-  it("Should Revert on zero values", async () => {
+  it("should revert on zero values", async () => {
     await expect(factory.proposeBasketLicense(fee, 
       tokenName, 
       tokenSymbol, 
@@ -79,7 +79,7 @@ describe("Factory", function () {
       ['0', COMP_WEIGHT, AAVE_WEIGHT],
       max)).to.be.reverted
   });
-  it("Should Revert on mismatched Arrays", async () => {
+  it("should revert on mismatched arrays", async () => {
     await expect(factory.proposeBasketLicense(fee, 
       tokenName, 
       tokenSymbol, 
@@ -87,7 +87,7 @@ describe("Factory", function () {
       [UNI_WEIGHT, COMP_WEIGHT],
       max)).to.be.reverted
   });
-  it("Should create a valid basket and mint 1 Basket token to sender", async () => {
+  it("should create a valid basket and mint 1 basket token to sender", async () => {
     const TestToken = await ethers.getContractFactory("TestToken");
     testToken1 = await TestToken.deploy('TEST', 'TEST');
     await testToken1.deployed();
@@ -146,7 +146,7 @@ describe("Factory", function () {
     basketBalance = await basket.balanceOf(owner.address);
     expect(basketBalance).to.equal("1000000000000000000");
   });
-  it("Should fail basket creation if creator doesn't have enough tokens or not approved", async () => {
+  it("should fail basket creation if creator doesn't have enough tokens or not approved", async () => {
     const TestToken = await ethers.getContractFactory("TestToken");
     testToken1 = await TestToken.deploy('TEST', 'TEST');
     await testToken1.deployed();

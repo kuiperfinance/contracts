@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: ISC
 pragma solidity =0.8.7;
 
 import "./IAuction.sol";
